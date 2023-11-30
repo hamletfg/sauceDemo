@@ -2,7 +2,7 @@ import { $ } from '@wdio/globals'
 import Page from './page.js';
 
 
-class loginPage extends Page {
+class LoginPage extends Page {
 
     get inputUsername () {
         return $('#user-name');
@@ -30,7 +30,7 @@ class loginPage extends Page {
         return $('.app_logo');
     }
 
-    get errorPopUP () {
+    get error () {
         return $('[data-test="error"]');
     }
 

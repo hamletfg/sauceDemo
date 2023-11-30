@@ -4,10 +4,9 @@ import LoginPage from '../pageobjects/swagLogin.js'
 describe('Login to SwagLabs', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.open()
-
-        await loginPage.login('standard_user', 'secret_sauce')
-        await expect(loginPage.notificationPopUp).toBeExisting()
-        await expect(loginPage.notificationPopUp).toHaveTextContaining(
+        await LoginPage.login('standard_user', 'secret_sauce')
+        await expect(LoginPage.notificationPopUp).toBeExisting()
+        await expect(LoginPage.notificationPopUp).toHaveTextContaining(
             'Swag Labs')
     })
 })
