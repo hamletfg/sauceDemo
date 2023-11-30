@@ -2,7 +2,7 @@ import { $ } from '@wdio/globals'
 import Page from './page.js';
 
 
-class LoginPage extends Page {
+class loginPage extends Page {
 
     get inputUsername () {
         return $('#user-name');
@@ -26,11 +26,11 @@ class LoginPage extends Page {
         await this.btnSubmit.click();
     }
 
-    get flashAlert () {
+    get notificationPopUp () {
         return $('.app_logo');
     }
 
-    get errorAlert () {
+    get errorPopUP () {
         return $('[data-test="error"]');
     }
 
