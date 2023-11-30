@@ -26,6 +26,14 @@ class LoginPage extends Page {
         await this.btnSubmit.click();
     }
 
+    get flashAlert () {
+        return $('.app_logo');
+    }
+
+    get errorAlert () {
+        return $('[data-test="error"]');
+    }
+
     /**
      * overwrite specific options to adapt it to page object
      */

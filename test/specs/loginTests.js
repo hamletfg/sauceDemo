@@ -13,3 +13,14 @@ describe('Login to SwagLabs', () => {
     })
 })
 
+describe('Login to SwagLabs', () => {
+    it('should login with valid credentials', async () => {
+        await loginError.open()
+
+        await loginError.login('locked_out_user', 'secret_sauce')
+        await expect(SecurePage.flashAlert).toBeExisting()
+        await expect(SecurePage.flashAlert).toHaveTextContaining(
+            'Epic sadface')
+    })
+})
+
