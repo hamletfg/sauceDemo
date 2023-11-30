@@ -12,7 +12,7 @@ class LoginPage extends Page {
         return $('#password');
     }
 
-    get btnSubmit () {
+    get loginButton () {
         return $('#login-button');
     }
 
@@ -23,14 +23,14 @@ class LoginPage extends Page {
     async login (username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.loginButton.click();
     }
 
-    get notificationPopUp () {
+    get swagLabsHeader () {
         return $('.app_logo');
     }
 
-    get error () {
+    get loginError () {
         return $('[data-test="error"]');
     }
 
