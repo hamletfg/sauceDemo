@@ -8,7 +8,7 @@ class LoginPage extends Page {
     errorUsers = ['nonExisting_user', 'locked_out']
 
     // Testing logins that should work and login. 
-    goodUsers = ['standard_user', 'problem_user', 'performance_glitch_user',
+    validUsers = ['standard_user', 'problem_user', 'performance_glitch_user',
     'error_user', ]
 
     get inputUsername () { return $('#user-name'); }
@@ -25,6 +25,27 @@ class LoginPage extends Page {
         await this.loginButton.click()
     }
 
+    async errorLogin (errorUserName, errorPassword) {
+        await this.login(errorUserName, errorPassword)
+        await expect(this.loginError).toBeExisting
+    }
+
+    async validLogin (validUserName, validPassword) {
+        await this.login(validUserName, validPassword)
+        await expect(this.swagLabsHeader).toBeExisting()
+    }
+
+    async errorUsers (userName, password) {
+        await this.login (userName, password)
+        if (userName = 'nonExisting_user') {
+            await expect(this.loginError).toHaveTextContaining('Username and password do not match any user in this service')
+        }
+    
+        else {
+            await expect(this.loginError).toHaveTextContaining('Epic sadface: Sorry, this user has been locked out.')
+        }
+    }
+    
     /* Here we're doing a loop to enter the array of names that
     should return a login error */
     async errorUsers () {
@@ -32,13 +53,13 @@ class LoginPage extends Page {
             await expect(this.swagLabsHeader).toExist()
             await this.login(this.errorUsers[i], 'bad_password')
             await expect(this.loginError).toHaveTextContaining('Username and password do not match any user in this service')
-            await this.login(this.errorNames[i], 'secret_sauce')
-            await expect(this.errorBox).toExist()
+            //await this.login(this.errorUsers[i], 'secret_sauce')
+            //await expect(this.errorBox).toExist()
         }
     }
 
-    // Now the loop for the goodUsers
-    async goodUsers () {
+    // The loop for the validUsers
+    async validUsers () {
         await expect(this.swagLabsHeader).toExist()
     }
 
